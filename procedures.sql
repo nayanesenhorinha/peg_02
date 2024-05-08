@@ -13,15 +13,14 @@ CREATE OR REPLACE PROCEDURE escola.cadastrar_aluno(
     _Bairro VARCHAR(50),
     _Cidade VARCHAR(50),
     _Estado VARCHAR(2),
-    _Logradouro VARCHAR(100),
     _Complemento VARCHAR(100)
 )
 AS $$
 DECLARE
     endereco_id INT;
 BEGIN
-    INSERT INTO escola.Endereco (Rua, Numero, Bairro, Cidade, Estado, Logradouro, Complemento)
-    VALUES (_Rua, _Numero, _Bairro, _Cidade, _Estado, _Logradouro, _Complemento)
+    INSERT INTO escola.Endereco (Rua, Numero, Bairro, Cidade, Estado, Complemento)
+    VALUES (_Rua, _Numero, _Bairro, _Cidade, _Estado, _Complemento)
     RETURNING ID_Endereco INTO endereco_id;
 
     INSERT INTO escola.Estudantes (NomeCompleto, DataNascimento, Genero, Email, Telefone, ID_Curso, ID_Turma, Ativo, ID_Endereco)
@@ -42,15 +41,14 @@ CREATE OR REPLACE PROCEDURE escola.cadastrar_facilitador(
     _Bairro VARCHAR(50),
     _Cidade VARCHAR(50),
     _Estado VARCHAR(2),
-    _Logradouro VARCHAR(100),
     _Complemento VARCHAR(100)
 )
 AS $$
 DECLARE
     endereco_id INT;
 BEGIN
-    INSERT INTO escola.Endereco (Rua, Numero, Bairro, Cidade, Estado, Logradouro, Complemento)
-    VALUES (_Rua, _Numero, _Bairro, _Cidade, _Estado, _Logradouro, _Complemento)
+    INSERT INTO escola.Endereco (Rua, Numero, Bairro, Cidade, Estado, Complemento)
+    VALUES (_Rua, _Numero, _Bairro, _Cidade, _Estado, _Complemento)
     RETURNING ID_Endereco INTO endereco_id
     
     INSERT INTO escola.Facilitador (NomeCompleto, Especializacao, Email, Telefone, DataContratacao, Ativo, ID_Endereco)
