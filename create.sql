@@ -1,3 +1,12 @@
+DROP TABLE escola.Endereco
+DROP TABLE escola.Curso
+DROP TABLE escola.Pessoa
+DROP TABLE escola.Estudante
+DROP TABLE escola.Facilitador
+DROP TABLE escola.Turma
+DROP TABLE escola.Matricula
+DROP TABLE escola.Modulo
+
 CREATE TABLE IF NOT EXISTS escola.Endereco (
     ID_Endereco SERIAL PRIMARY KEY,
     Rua VARCHAR(100),
@@ -38,7 +47,6 @@ CREATE TABLE IF NOT EXISTS escola.Facilitador (
     ID_Facilitador SERIAL PRIMARY KEY,
     Area VARCHAR(100),
     Horario VARCHAR(45),
-    Localizacao VARCHAR(45),
     DataContratacao DATE,
     ID_Pessoa INT,
     FOREIGN KEY(ID_Pessoa) REFERENCES escola.Pessoa(ID_Pessoa)
