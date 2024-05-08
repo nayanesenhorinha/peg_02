@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS escola.Endereco (
     Complemento VARCHAR(100)
 );
 
-CREATE TABLE escola.Modulo (
+CREATE TABLE IF NOT EXISTS escola.Modulo (
     ID_Modulo SERIAL PRIMARY KEY,
     Nome VARCHAR(100),
     Descricao TEXT,
@@ -31,14 +31,14 @@ CREATE TABLE escola.Modulo (
     ID_Curso INT
 );
 
-CREATE TABLE escola.Curso (
+CREATE TABLE IF NOT EXISTS escola.Curso (
     ID_Curso SERIAL PRIMARY KEY,
     NomeCurso VARCHAR(100),
     Descricao TEXT,
     Duracao INT
 );
 
-CREATE TABLE escola.Turma (
+CREATE TABLE IF NOT EXISTS escola.Turma (
     ID_Turma SERIAL PRIMARY KEY,
     CodigoTurma VARCHAR(50),
     Turno VARCHAR(20),
@@ -48,7 +48,7 @@ CREATE TABLE escola.Turma (
     ID_Curso INT
 );
 
-CREATE TABLE escola.Facilitador (
+CREATE TABLE IF NOT EXISTS escola.Facilitador (
     ID_Facilitador SERIAL PRIMARY KEY,
     NomeCompleto VARCHAR(100),
     Especializacao VARCHAR(100),
