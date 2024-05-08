@@ -5,8 +5,7 @@ CREATE TABLE IF NOT EXISTS escola.Endereco (
     Bairro VARCHAR(50),
     Cidade VARCHAR(50),
     Estado VARCHAR(2),
-    Logradouro VARCHAR(100),
-    Complemento VARCHAR(100)
+    Cep VARCHAR(8)
 );
 
 CREATE TABLE IF NOT EXISTS escola.Curso (
@@ -15,42 +14,54 @@ CREATE TABLE IF NOT EXISTS escola.Curso (
     Descricao TEXT,
     Duracao INT
 );
-CREATE TABLE IF NOT EXISTS escola.Turma (
-    ID_Turma SERIAL PRIMARY KEY,
-    CodigoTurma VARCHAR(50),
-    Turno VARCHAR(20),
-    Polo VARCHAR(100),
-    DataInicio DATE,
-    DataTermino DATE,
-    ID_Curso INT,
-    FOREIGN KEY(ID_Curso) REFERENCES escola.Curso(ID_Curso));
-	
-CREATE TABLE IF NOT EXISTS escola.Estudantes (
-    ID_Estudante SERIAL PRIMARY KEY,
+
+CREATE TABLE IF NOT EXISTS escola.Pessoa (
+    ID_Pessoa SERIAL PRIMARY KEY,
     NomeCompleto VARCHAR(100),
     DataNascimento DATE,
-    Genero CHAR(1),
+    Genero CHAR('F','M','X'),
     Email VARCHAR(100),
     Telefone INT,
-    Ativo BOOLEAN,
-    ID_Curso INT,
-    FOREIGN KEY(ID_Curso) REFERENCES escola.Curso(ID_Curso),
-    ID_Turma INT,
-    FOREIGN KEY(ID_Turma) REFERENCES escola.Turma(ID_Turma),
     ID_Endereco INT,
     FOREIGN KEY(ID_Endereco) REFERENCES escola.Endereco(ID_Endereco)
 );
 
+CREATE TABLE IF NOT EXISTS escola.Estudante (
+    ID_Estudante SERIAL PRIMARY KEY,
+    NumeroMatricula INT,
+    DataMatricula DATE,
+    ID_Pessoa INT,
+    FOREIGN KEY(ID_Pessoa) REFERENCES escola.Pessoa(ID_Pessoa)
+);
+
+CREATE TABLE IF NOT EXISTS escola.Turma (
+    ID_Turma SERIAL PRIMARY KEY,
+    NomeTurma VARCHAR(50),
+    Horario VARCHAR(20),
+    Localizacao VARCHAR(100),
+    DataInicio DATE,
+    DataTermino DATE,
+    ID_Curso INT,
+    FOREIGN KEY(ID_Curso) REFERENCES escola.Curso(ID_Curso),
+    ID_Facilitador INT,
+    FOREIGN KEY(ID_Facilitador) REFERENCES escola.Facilitador(ID_Facilitador
+);
+
+CREATE TABLE IF NOT EXISTS escola.Matricula (
+    ID_Matricula SERIAL PRIMARY KEY,
+    ID_Estudante INT,
+    FOREIGN KEY(ID_Estudante) REFERENCES escola.Estudante(ID_Estudante),
+    ID_Turma INT,
+    FOREIGN KEY(ID_Turma) REFERENCES escola.Turma(ID_Turma);
+
 CREATE TABLE IF NOT EXISTS escola.Facilitador (
     ID_Facilitador SERIAL PRIMARY KEY,
-    NomeCompleto VARCHAR(100),
-    Especializacao VARCHAR(100),
-    Email VARCHAR(100),
-    Telefone INT,
+    Area VARCHAR(100),
+    Horario VARCHAR(45),
+    Localizacao VARCHAR(45),
     DataContratacao DATE,
-    Ativo BOOLEAN,
-    ID_Endereco INT,
-    FOREIGN KEY(ID_Endereco) REFERENCES escola.Endereco(ID_Endereco)
+    ID_Pessoa INT,
+    FOREIGN KEY(ID_Pessoa) REFERENCES escola.Pessoa(ID_Pessoa)
 );
 
 CREATE TABLE IF NOT EXISTS escola.Modulo (
@@ -61,8 +72,5 @@ CREATE TABLE IF NOT EXISTS escola.Modulo (
     ID_Facilitador INT,
     FOREIGN KEY(ID_Facilitador) REFERENCES escola.Facilitador(ID_Facilitador),
     ID_Curso INT,
-    FOREIGN KEY(ID_Curso) REFERENCES escola.Curso(ID_Curso)
+    FOREIGN KEY(ID_Curso) REFERENCES escola.Turma(ID_Curso)
 );
-
-
-
