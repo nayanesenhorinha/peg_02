@@ -1,3 +1,5 @@
+-- Este script está atualizado na versão mais recente do diagrama em repositório
+
 DROP TABLE escola.Endereco
 DROP TABLE escola.Curso
 DROP TABLE escola.Pessoa
