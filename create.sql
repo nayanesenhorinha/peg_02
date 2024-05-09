@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS escola.Endereco (
     Bairro VARCHAR(50),
     Cidade VARCHAR(50),
     Estado VARCHAR(2),
+    Pais VARCHAR(45),
     Cep VARCHAR(8)
 );
 
@@ -39,6 +40,7 @@ CREATE TABLE IF NOT EXISTS escola.Estudante (
     ID_Estudante SERIAL PRIMARY KEY,
     NumeroMatricula INT,
     DataMatricula DATE,
+    Status BOOLEAN,
     ID_Pessoa INT,
     FOREIGN KEY(ID_Pessoa) REFERENCES escola.Pessoa(ID_Pessoa)
 );
@@ -48,6 +50,8 @@ CREATE TABLE IF NOT EXISTS escola.Facilitador (
     Area VARCHAR(100),
     Horario VARCHAR(45),
     DataContratacao DATE,
+    Localizacao VARCHAR(45),
+    Salario FLOAT,
     ID_Pessoa INT,
     FOREIGN KEY(ID_Pessoa) REFERENCES escola.Pessoa(ID_Pessoa)
 );
