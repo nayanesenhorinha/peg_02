@@ -1,0 +1,112 @@
+INSERT INTO Endereco (rua, cep, cidade, bairro, pais) VALUES
+('Rua das Flores, 123', '12345-678', 'São Paulo', 'Jardins', 'Brasil'),
+('Avenida Central, 456', '54321-987', 'Rio de Janeiro', 'Copacabana', 'Brasil'),
+('Rua da Praia, 789', '98765-432', 'Fortaleza', 'Beira Mar', 'Brasil'),
+('Rua dos Coqueiros, 321', '13579-246', 'Salvador', 'Barra', 'Brasil'),
+('Avenida das Palmeiras, 654', '24680-135', 'Recife', 'Boa Viagem', 'Brasil'),
+('Rua das Montanhas, 987', '55555-555', 'Curitiba', 'Centro', 'Brasil'),
+('Avenida das Águas, 321', '66666-666', 'Manaus', 'Adrianópolis', 'Brasil'),
+('Rua dos Ventos, 654', '77777-777', 'Porto Alegre', 'Moinhos de Vento', 'Brasil'),
+('Avenida das Flores, 987', '88888-888', 'Brasília', 'Asa Sul', 'Brasil'),
+('Rua dos Girassóis, 321', '99999-999', 'Belo Horizonte', 'Savassi', 'Brasil');
+
+
+INSERT INTO Pessoa (Endereco_id, nome, sobrenome, email, telefone, data_nasc, genero) VALUES
+(1, 'João', 'Silva', 'joao.silva@gmail.com', '11 1234-5678', '1985-05-10', 'M'),
+(2, 'Maria', 'Santos', 'maria.santos@hotmail.com', '21 9876-5432', '1990-08-20', 'F'),
+(3, 'Ana', 'Oliveira', 'ana.oliveira@outlook.com', '31 1111-2222', '1988-03-15', 'F'),
+(4, 'Pedro', 'Ferreira', 'pedro.ferreira@live.com', '41 2222-3333', '1993-11-25', 'M'),
+(5, 'Carla', 'Ribeiro', 'carla.ribeiro@gmail.com', '51 3333-4444', '1980-09-05', 'F'),
+(6, 'Fernando', 'Martins', 'fernando.martins@hotmail.com', '61 4444-5555', '1975-07-30', 'M'),
+(7, 'Juliana', 'Lima', 'juliana.lima@outlook.com', '71 5555-6666', '1996-12-12', 'F'),
+(8, 'Rafael', 'Santana', 'rafael.santana@live.com', '81 6666-7777', '1983-04-18', 'M'),
+(9, 'Camila', 'Almeida', 'camila.almeida@gmail.com', '91 7777-8888', '1991-10-22', 'F'),
+(10, 'Lucas', 'Oliveira', 'lucas.oliveira@hotmail.com', '32 8888-9999', '1998-02-14', 'M');
+
+
+
+INSERT INTO Facilitadores (Pessoa_id, area, horario, localizacao, data_contrato, salario) VALUES
+(1, 'Matemática', 'Segunda-feira, 14:00-16:00', 'Sala 101', '2023-03-01', 2000.00),
+(2, 'História', 'Terça-feira, 10:00-12:00', 'Sala 201', '2022-12-15', 1800.00),
+(3, 'Química', 'Quinta-feira, 14:00-16:00', 'Sala 102', '2023-05-01', 2000.00),
+(4, 'Geografia', 'Sexta-feira, 10:00-12:00', 'Sala 202', '2022-10-15', 1800.00),
+(5, 'Inglês', 'Sábado, 08:00-10:00', 'Sala 303', '2023-01-01', 2200.00),
+(6, 'Educação Física', 'Segunda-feira, 16:00-18:00', 'Quadra Poliesportiva', '2023-06-01', 2300.00),
+(7, 'Artes', 'Terça-feira, 14:00-16:00', 'Ateliê', '2023-02-15', 2100.00),
+(8, 'Informática', 'Quarta-feira, 18:00-20:00', 'Laboratório de Informática', '2023-03-15', 2400.00),
+(9, 'Espanhol', 'Quinta-feira, 19:00-21:00', 'Sala 304', '2023-04-01', 2200.00),
+(10, 'Literatura', 'Sexta-feira, 15:00-17:00', 'Biblioteca', '2023-05-15', 2000.00),
+(1, 'Física', 'Quarta-feira, 08:00-10:00', 'Sala 301', '2023-04-01', 2200.00); -- Facilitador duplicado
+
+INSERT INTO Cursos (nome_curso, descricao, duracao, modulos) VALUES
+('Matemática Básica', 'Curso introdutório de matemática', '3 meses', 5),
+('História do Brasil', 'Panorama da história brasileira', '4 meses', 4),
+('Química Avançada', 'Curso avançado de química', '6 meses', 8),
+('Geopolítica Mundial', 'Estudo da geopolítica global', '5 meses', 6),
+('Inglês Intermediário', 'Curso intermediário de inglês', '4 meses', 5),
+('Educação Física Escolar', 'Aspectos pedagógicos da educação física', '3 meses', 4),
+('Artes Visuais', 'Exploração de técnicas artísticas', '3 meses', 4),
+('Informática Básica', 'Introdução à informática', '2 meses', 3),
+('Espanhol para Viagens', 'Curso rápido de espanhol para viagens', '2 meses', 3),
+('Literatura Brasileira', 'Panorama da literatura brasileira', '4 meses', 5);
+
+INSERT INTO Turmas (Cursos_id, Facilitadores_id, nome_turma, horario, localizacao, data_inicio, data_termino) VALUES
+(1, 1, 'Turma A', 'Segunda-feira, 14:00-16:00', 'Sala 101', '2024-02-05', '2024-05-05'),
+(2, 2, 'Turma B', 'Terça-feira, 10:00-12:00', 'Sala 201', '2024-01-15', '2024-04-15'),
+(2, 3, 'Turma D', 'Quinta-feira, 14:00-16:00', 'Sala 102', '2024-03-15', '2024-08-15'),
+(3, 4, 'Turma E', 'Sexta-feira, 10:00-12:00', 'Sala 202', '2024-02-20', '2024-07-20'),
+(4, 5, 'Turma F', 'Sábado, 08:00-10:00', 'Sala 303', '2024-04-01', '2024-08-01'),
+(5, 6, 'Turma G', 'Segunda-feira, 16:00-18:00', 'Quadra Poliesportiva', '2024-05-01', '2024-08-01'),
+(6, 7, 'Turma H', 'Terça-feira, 14:00-16:00', 'Ateliê', '2024-06-15', '2024-09-15'),
+(7, 8, 'Turma I', 'Quarta-feira, 18:00-20:00', 'Laboratório de Informática', '2024-07-01', '2024-10-01'),
+(8, 9, 'Turma J', 'Quinta-feira, 19:00-21:00', 'Sala 304', '2024-08-15', '2024-11-15'),
+(1, 10, 'Turma K', 'Sexta-feira, 15:00-17:00', 'Biblioteca', '2024-09-01', '2024-12-01'),
+(1, 3, 'Turma C', 'Quarta-feira, 08:00-10:00', 'Sala 301', '2024-03-01', '2024-06-01');
+
+
+INSERT INTO Estudantes (Pessoa_id, data_matricula, numero_matricula, status) VALUES
+(1, '2024-02-01', 12345, 1),
+(2, '2024-01-10', 54321, 1),
+(3, '2024-04-01', 11111, 1),
+(4, '2024-05-15', 22222, 1),
+(5, '2024-06-30', 33333, 1),
+(6, '2024-07-10', 44444, 1),
+(7, '2024-08-25', 55555, 1),
+(8, '2024-09-05', 66666, 1),
+(9, '2024-10-20', 77777, 1),
+(10, '2024-11-10', 88888, 1);
+
+
+INSERT INTO Matricula (Turmas_id, Estudantes_id) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(1, 9),
+(2, 10);
+
+INSERT INTO Modulos (Turmas_id, nome_modulo, descricao, horas) VALUES
+(1, 'Adição e subtração', 'Operações básicas de matemática', 10),
+(1, 'Multiplicação e divisão', 'Outras operações básicas de matemática', 12),
+(2, 'Período Colonial', 'Estudo do período colonial brasileiro', 8),
+(2, 'República Velha', 'Estudo do período da República Velha no Brasil', 10),
+(3, 'Reações Químicas', 'Estudo das reações químicas', 12),
+(3, 'Estequiometria', 'Cálculos estequiométricos', 10),
+(4, 'Geopolítica Contemporânea', 'Análise da geopolítica atual', 10),
+(4, 'Globalização', 'Estudo dos processos de globalização', 8),
+(5, 'Conversação', 'Prática de conversação em inglês', 8),
+(5, 'Gramática Avançada', 'Aprofundamento na gramática inglesa', 10),
+(6, 'Atletismo', 'Fundamentos do atletismo', 6),
+(6, 'Jogos Recreativos', 'Organização de jogos recreativos', 8),
+(7, 'Desenho', 'Técnicas de desenho', 8),
+(7, 'Pintura', 'Técnicas de pintura em tela', 8),
+(8, 'Introdução ao Windows', 'Noções básicas do sistema operacional', 4),
+(8, 'Microsoft Office', 'Utilização básica do pacote Office', 8),
+(9, 'Conversação Básica', 'Prática de conversação em espanhol', 8),
+(9, 'Vocabulário Essencial', 'Ampliação do vocabulário em espanhol', 8),
+(10, 'Romantismo', 'Estudo do movimento literário do romantismo', 10),
+(10, 'Realismo', 'Estudo do movimento literário do realismo', 8);

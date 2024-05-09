@@ -1,0 +1,93 @@
+1. Selecionar a quantidade total de estudantes cadastrados no banco;
+
+SELECT (
+    SELECT COUNT(*)
+    FROM Estudantes
+) AS total_estudantes;
+
+
+2. Selecionar quais pessoas facilitadoras atuam em mais de uma turma;
+
+SELECT p.nome, p.sobrenome, total_turmas
+FROM (
+    SELECT f.Pessoa_id, COUNT(*) AS total_turmas
+    FROM Facilitadores f
+    JOIN Turmas t ON f.id = t.Facilitadores_id
+    GROUP BY f.Pessoa_id
+    HAVING COUNT(*) > 1
+) AS facilitadores_turmas
+JOIN Pessoa p ON facilitadores_turmas.Pessoa_id = p.id;
+
+
+3. Crie uma view que selecione a porcentagem de estudantes com status de evasão
+agrupados por turma;
+
+CREATE VIEW Porcentagem_Evasao_Por_Turma AS
+SELECT
+    t.id AS turma_id,
+    t.nome_turma,
+    COUNT(CASE WHEN e.status = 0 THEN 1 ELSE NULL END) AS estudantes_evasao,
+    COUNT(*) AS total_estudantes,
+    ROUND((COUNT(CASE WHEN e.status = 0 THEN 1 ELSE NULL END)::NUMERIC / COUNT(*)) * 100, 2) AS percentual_evasao
+FROM
+    Turmas t
+JOIN
+    Matricula m ON t.id = m.Turmas_id
+JOIN
+    Estudantes e ON m.Estudantes_id = e.id
+GROUP BY
+    t.id, t.nome_turma;
+
+SELECT * FROM Porcentagem_Evasao_Por_Turma;
+
+4. Crie um trigger para ser disparado quando o atributo status de um estudante for atualizado
+e inserir um novo dado em uma tabela de log.
+
+PRIMEIRO CRIAR A TABELA
+
+CREATE TABLE IF NOT EXISTS Log_Status_Estudante (
+    id SERIAL PRIMARY KEY,
+    estudante_id INT,
+    novo_status SMALLINT,
+    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+TRIGGER
+
+CREATE OR REPLACE FUNCTION log_atualizacao_status_estudante()
+RETURNS TRIGGER AS
+$$
+BEGIN
+    INSERT INTO Log_Status_Estudante (estudante_id, novo_status)
+    VALUES (NEW.id, NEW.status);
+    RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_atualizacao_status_estudante
+AFTER UPDATE ON Estudantes
+FOR EACH ROW
+WHEN (OLD.status IS DISTINCT FROM NEW.status)
+EXECUTE FUNCTION log_atualizacao_status_estudante();
+
+
+5. Além disso, vocês deverão pensar em uma pergunta que deverá ser respondida por uma
+consulta SQL que combine pelo menos 3 tabelas. (inner join 3 tabelas)
+
+
+Quais são os cursos oferecidos e quantos módulos cada um deles possui?
+
+SELECT c.nome_curso, COUNT(m.id) AS total_modulos
+FROM Cursos c
+LEFT JOIN Turmas t ON c.id = t.Cursos_id
+LEFT JOIN Modulos m ON t.id = m.Turmas_id
+GROUP BY c.nome_curso;
+
+
+*****************************
+- criar perguntas adicionais
+*****************************
+
+
