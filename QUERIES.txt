@@ -90,4 +90,29 @@ GROUP BY c.nome_curso;
 - criar perguntas adicionais
 *****************************
 
+Todos os detalhes dos estudantes cadastrados no BD
 
+SELECT 
+    Pessoa.nome AS nome_estudante,
+    Pessoa.sobrenome AS sobrenome_estudante,
+    Pessoa.email AS email_estudante,
+    Pessoa.telefone AS telefone_estudante,
+    Pessoa.data_nasc AS data_nasc_estudante,
+    Pessoa.genero AS genero_estudante,
+    Endereco.rua AS rua_endereco,
+    Endereco.cep AS cep_endereco,
+    Endereco.cidade AS cidade_endereco,
+    Endereco.bairro AS bairro_endereco,
+    Endereco.pais AS pais_endereco,
+    Turmas.nome_turma AS nome_turma,
+    Turmas.horario AS horario_turma,
+    Turmas.localizacao AS localizacao_turma,
+    Turmas.data_inicio AS data_inicio_turma,
+    Turmas.data_termino AS data_termino_turma
+FROM 
+    Estudantes
+JOIN Pessoa ON Estudantes.Pessoa_id = Pessoa.id
+JOIN Endereco ON Pessoa.Endereco_id = Endereco.id
+JOIN Matricula ON Estudantes.id = Matricula.Estudantes_id
+JOIN Turmas ON Matricula.Turmas_id = Turmas.id
+ORDER BY Pessoa.nome;
