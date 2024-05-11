@@ -116,3 +116,48 @@ JOIN Endereco ON Pessoa.Endereco_id = Endereco.id
 JOIN Matricula ON Estudantes.id = Matricula.Estudantes_id
 JOIN Turmas ON Matricula.Turmas_id = Turmas.id
 ORDER BY Pessoa.nome;
+
+
+6. Alunos evadidos.
+    SELECT
+    numero_matricula,
+    nome,
+    sobrenome,
+    email,
+    telefone,
+    novo_status,
+    nome_turma,
+    localizacao 
+FROM 
+    Estudantes
+INNER JOIN 
+    Pessoa ON Pessoa.id = Estudantes.pessoa_id
+INNER JOIN 
+    log_status_estudante ON Estudantes.id = log_status_estudante.estudante_id
+INNER JOIN 
+    Matricula ON Estudantes.id = Matricula.estudantes_id
+INNER JOIN 
+    Turmas ON Turmas.id = Matricula.turmas_id;
+
+
+7. Qual Módulo tem mais desistência?
+
+SELECT
+    m.nome_modulo,
+    COUNT(*) AS total_desistencias
+FROM
+    Matricula mat
+JOIN
+    Estudantes e ON mat.Estudantes_id = e.id
+JOIN
+    Turmas t ON mat.Turmas_id = t.id
+JOIN
+    Modulos m ON t.id = m.Turmas_id
+WHERE
+    e.status = 0
+GROUP BY
+    m.nome_modulo
+ORDER BY
+    total_desistencias DESC
+LIMIT 1;
+
