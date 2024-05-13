@@ -105,7 +105,7 @@ ORDER BY Pessoa.nome;
     sobrenome,
     email,
     telefone,
-    novo_status,
+    status_novo,
     nome_turma,
     localizacao 
 FROM 
@@ -113,7 +113,7 @@ FROM
 INNER JOIN 
     Pessoa ON Pessoa.id = Estudantes.pessoa_id
 INNER JOIN 
-    log_status_estudante ON Estudantes.id = log_status_estudante.estudante_id
+    log_estudante_status ON Estudantes.id = log_estudante_status.estudante_id
 INNER JOIN 
     Matricula ON Estudantes.id = Matricula.estudantes_id
 INNER JOIN 
