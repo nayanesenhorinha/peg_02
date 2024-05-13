@@ -138,5 +138,4 @@ GROUP BY
     m.nome_modulo
 ORDER BY
     total_desistencias DESC
-LIMIT 1;
 
