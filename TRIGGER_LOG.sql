@@ -8,19 +8,27 @@ CREATE TABLE IF NOT EXISTS log_estudante_status (
 );
 
 CREATE OR REPLACE FUNCTION public.estudante_status_trigger_function()
-    RETURNS trigger
-    LANGUAGE 'plpgsql'
-    COST 100
-    VOLATILE NOT LEAKPROOF
+    RETURNS TRIGGER
+    LANGUAGE plpgsql
 AS $BODY$
 BEGIN
-
-        INSERT INTO Log_Estudante_Status (estudante_id, status_anterior, status_novo, data_atualizacao)
+    IF OLD.status <> NEW.status THEN
+        INSERT INTO log_estudante_status (estudante_id, status_anterior, status_novo, data_atualizacao)
         VALUES (OLD.id, OLD.status, NEW.status, NOW());
-
+    END IF;
     RETURN NEW; -- Retorna NEW para permitir a modificação dos dados na tabela de Estudantes
 END;
 $BODY$;
 
-ALTER FUNCTION public.estudante_status_trigger_function()
-    OWNER TO postgres;
+-- Associação do gatilho à tabela
+CREATE TRIGGER estudante_status_trigger
+AFTER UPDATE ON Estudantes
+FOR EACH ROW
+EXECUTE FUNCTION estudante_status_trigger_function();
+
+-- Desativação e reativação do gatilho
+ALTER TABLE Estudantes
+DISABLE TRIGGER estudante_status_trigger;
+
+ALTER TABLE Estudantes
+ENABLE TRIGGER estudante_status_trigger;
