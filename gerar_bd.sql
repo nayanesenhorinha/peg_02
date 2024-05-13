@@ -77,9 +77,4 @@ CREATE TABLE IF NOT EXISTS Modulos (
   FOREIGN KEY (Turmas_id) REFERENCES Turmas(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Log_Status_Estudante (
-    id SERIAL PRIMARY KEY,
-    estudante_id INT,
-    novo_status SMALLINT,
-    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+
