@@ -1,7 +1,5 @@
-# Projeto de Modernização do Armazenamento de Dados e Gerenciamento da Estrutura de Ensino da Resilia
-
-## Resumo
-Este projeto visa modernizar o processo de armazenamento de dados e construção para gerenciamento da estrutura de ensino da Resilia. Atualmente, as informações sobre alunos, facilitadores, turmas, módulos e cursos são armazenadas em planilhas separadas, o que dificulta a extração de dados estratégicos para a empresa. Para resolver esse problema, propomos a criação de um banco de dados relacional que centralize todas essas informações de forma organizada e eficiente.
+# Sistema de gerenciamento Resilia
+O sistema de gerenciamento da Resilia é a solução completa para a administração eficiente de cursos, turmas, alunos e facilitadores. Com recursos avançados de matrícula, acompanhamento e análise de desempenho, esta plataforma integrada otimiza todos os processos da escola. Este projeto visa modernizar o processo de armazenamento de dados e construção para gerenciamento da estrutura de ensino da Resilia. Atualmente, as informações sobre alunos, facilitadores, turmas, módulos e cursos são armazenadas em planilhas separadas, o que dificulta a extração de dados estratégicos para a empresa. Para resolver esse problema, propomos a criação de um banco de dados relacional que centralize todas essas informações de forma organizada e eficiente.
 
 ## Passo a Passo
 
@@ -16,14 +14,11 @@ Este projeto visa modernizar o processo de armazenamento de dados e construção
 - Incluímos chaves primárias e estrangeiras conforme necessário.
 
 ### 3. Inserção de Dados de Exemplo
-- Escrevemos scripts SQL para inserir dados de exemplo em todas as tabelas do banco de dados.
+- Escrevemos scripts SQL para inserir dados para realizarmos testes em todas as tabelas do banco de dados.
 - Inserimos um volume suficiente de dados para testar as consultas (mínimo de 50 registros).
 
-### 4. Consultas SQL
+### 4. Apresentação de Resultados
 - Resolvemos perguntas estratégicas apresentadas no contexto utilizando consultas SQL.
-- Incluímos consultas para as perguntas adicionais.
-
-### 5. Apresentação de Resultados
 - Preparamos uma apresentação de slides ou documento em PPTX.
 - Incluímos a modelagem do banco de dados e os scripts SQL utilizados.
 - Abordamos todas as perguntas durante a apresentação dos resultados, de forma criativa.
@@ -33,7 +28,7 @@ Este projeto visa modernizar o processo de armazenamento de dados e construção
 >git clone https://github.com/nayanesenhorinha/peg_02.git
 3. Execute os scripts SQL para criar o banco de dados e inserir os dados de exemplo.
 4. Utilize as consultas SQL para responder às perguntas estratégicas e adicionais.
-5. Consulte o arquivo README.md para mais detalhes sobre o projeto e a execução dos scripts.
+5. Consulte o arquivo README.md e NOME-APRESENTACAO.pptx para mais detalhes sobre o projeto e a execução dos scripts.
 
 ## Equipe
 - [Paulo Victor da Silva Rodrigues](https://github.com/pevehdev)
