@@ -1,12 +1,11 @@
-1. Selecionar a quantidade total de estudantes cadastrados no banco;
+-- Selecionar a quantidade total de estudantes cadastrados no banco:
 
 SELECT (
     SELECT COUNT(*)
     FROM Estudantes
 ) AS total_estudantes;
 
-
-2. Selecionar quais pessoas facilitadoras atuam em mais de uma turma;
+-- Selecionar quais pessoas facilitadoras atuam em mais de uma turma:
 
 SELECT p.nome, p.sobrenome, total_turmas
 FROM (
@@ -18,9 +17,7 @@ FROM (
 ) AS facilitadores_turmas
 JOIN Pessoa p ON facilitadores_turmas.Pessoa_id = p.id;
 
-
-3. Crie uma view que selecione a porcentagem de estudantes com status de evasão
-agrupados por turma;
+-- Crie uma view que selecione a porcentagem de estudantes com status de evasão agrupados por turma:
 
 CREATE VIEW Porcentagem_Evasao_Por_Turma AS
 SELECT
@@ -40,10 +37,7 @@ GROUP BY
 
 SELECT * FROM Porcentagem_Evasao_Por_Turma;
 
-4. Crie um trigger para ser disparado quando o atributo status de um estudante for atualizado
-e inserir um novo dado em uma tabela de log.
-
-PRIMEIRO CRIAR A TABELA
+-- Crie um trigger para ser disparado quando o atributo status de um estudante for atualizado e inserir um novo dado em uma tabela de log.
 
 CREATE TABLE IF NOT EXISTS Log_Status_Estudante (
     id SERIAL PRIMARY KEY,
@@ -51,9 +45,6 @@ CREATE TABLE IF NOT EXISTS Log_Status_Estudante (
     novo_status SMALLINT,
     data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-
-TRIGGER
 
 CREATE OR REPLACE FUNCTION log_atualizacao_status_estudante()
 RETURNS TRIGGER AS
@@ -72,12 +63,7 @@ FOR EACH ROW
 WHEN (OLD.status IS DISTINCT FROM NEW.status)
 EXECUTE FUNCTION log_atualizacao_status_estudante();
 
-
-5. Além disso, vocês deverão pensar em uma pergunta que deverá ser respondida por uma
-consulta SQL que combine pelo menos 3 tabelas. (inner join 3 tabelas)
-
-
-Quais são os cursos oferecidos e quantos módulos cada um deles possui?
+-- Quais são os cursos oferecidos e quantos módulos cada um deles possui?
 
 SELECT c.nome_curso, COUNT(m.id) AS total_modulos
 FROM Cursos c
@@ -85,12 +71,7 @@ LEFT JOIN Turmas t ON c.id = t.Cursos_id
 LEFT JOIN Modulos m ON t.id = m.Turmas_id
 GROUP BY c.nome_curso;
 
-
-*****************************
-- criar perguntas adicionais
-*****************************
-
-Todos os detalhes dos estudantes cadastrados no BD
+-- Todos os detalhes dos estudantes cadastrados no BD
 
 SELECT 
     Pessoa.nome AS nome_estudante,
@@ -117,8 +98,7 @@ JOIN Matricula ON Estudantes.id = Matricula.Estudantes_id
 JOIN Turmas ON Matricula.Turmas_id = Turmas.id
 ORDER BY Pessoa.nome;
 
-
-6. Alunos evadidos.
+-- Alunos evadidos.
     SELECT
     numero_matricula,
     nome,
@@ -139,8 +119,7 @@ INNER JOIN
 INNER JOIN 
     Turmas ON Turmas.id = Matricula.turmas_id;
 
-
-7. Qual Módulo tem mais desistência?
+-- Qual Módulo tem mais desistência?
 
 SELECT
     m.nome_modulo,
