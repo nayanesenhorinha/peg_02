@@ -36,10 +36,10 @@ Este projeto visa modernizar o processo de armazenamento de dados e construção
 5. Consulte o arquivo README.md para mais detalhes sobre o projeto e a execução dos scripts.
 
 ## Equipe
-- Paulo Victor da Silva Rodrigues
-- Daniel Nascimento Fonseca
-- Gabriel Soares Alves
-- Nayane Cristina de Souza
+- [Paulo Victor da Silva Rodrigues](https://github.com/pevehdev)
+- [Daniel Nascimento Fonseca](https://github.com/Dannfonseca)
+- [Gabriel Soares Alves](https://github.com/Gabrielsoaresdm)
+- [Nayane Cristina de Souza](https://github.com/nayanesenhorinha)
 
 ## Considerações Finais
 Este projeto tem como objetivo melhorar o gerenciamento da estrutura de ensino da Resilia, proporcionando uma maneira mais eficiente de armazenar e acessar informações importantes. Esperamos que as soluções propostas atendam às necessidades da empresa e contribuam para o seu sucesso futuro.
