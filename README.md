@@ -30,6 +30,10 @@ O sistema de gerenciamento da Resilia é a solução completa para a administra�
 4. Utilize as consultas SQL para responder às perguntas estratégicas e adicionais.
 5. Consulte o arquivo README.md e NOME-APRESENTACAO.pptx para mais detalhes sobre o projeto e a execução dos scripts.
 
+## Protótipo
+Um protótipo do nosso modelo de banco de dados pode ser acessado online no link:
+> https://resiliadata-online2.onrender.com/
+
 ## Equipe
 - [Daniel Nascimento Fonseca](https://github.com/Dannfonseca)
 - [Gabriel Soares Alves](https://github.com/Gabrielsoaresdm)
