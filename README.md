@@ -28,7 +28,7 @@ O sistema de gerenciamento da Resilia é a solução completa para a administra�
 >git clone https://github.com/nayanesenhorinha/peg_02.git
 3. Execute os scripts SQL para criar o banco de dados e inserir os dados de exemplo.
 4. Utilize as consultas SQL para responder às perguntas estratégicas e adicionais.
-5. Consulte o arquivo README.md e NOME-APRESENTACAO.pptx para mais detalhes sobre o projeto e a execução dos scripts.
+5. Consulte o arquivo README.md e (apresentação online)[https://resiliadata-online2.onrender.com/] para mais detalhes sobre o projeto e a execução dos scripts.
 
 ## Protótipo
 Como um desafio extra, nossa equipe desenolveu uma aplicação web como protótipo, sendo possível realizar todas as operações CRUD. O protótipo pode ser acessado no link:
