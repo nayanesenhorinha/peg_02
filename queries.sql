@@ -67,8 +67,8 @@ EXECUTE FUNCTION log_atualizacao_status_estudante();
 
 SELECT c.nome_curso, COUNT(m.id) AS total_modulos
 FROM Cursos c
-LEFT JOIN Turmas t ON c.id = t.Cursos_id
-LEFT JOIN Modulos m ON t.id = m.Turmas_id
+INNER JOIN Turmas t ON c.id = t.Cursos_id
+INNER JOIN Modulos m ON t.id = m.Turmas_id
 GROUP BY c.nome_curso;
 
 -- Todos os detalhes dos estudantes cadastrados no BD
